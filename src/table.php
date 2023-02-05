@@ -17,10 +17,13 @@ require_once "./database/connect_db.php";
 </head>
 
 <body>
-    <main class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-slate-700 w-20 h-16 rounded flex justify-center items-center">
-        <a href="table.php" class="text-white">To Table</a>
-    </main>
+    <h1 class="text-3xl font-bold underline">Table here</h1>
 
+    <table>
+        <?php
+        require_once "./components/select_table.php";
+        ?>
+    </table>
     <?php
     $db->close();
     ?>
