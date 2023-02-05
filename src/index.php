@@ -1,3 +1,10 @@
+<?php
+// Connect to database
+require_once "./database/connect_db.php";
+?>
+
+<!-- ------------------------------------------------------------------------------------------- -->
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,7 +17,16 @@
 </head>
 
 <body>
-    <h1 class="text-3xl font-bold underline">Hello world!</h1>
+    <h1 class="text-3xl font-bold underline">Table here</h1>
+
+    <table>
+        <?php
+        require_once "./components/select_table.php";
+        ?>
+    </table>
+    <?php
+    $db->close();
+    ?>
 </body>
 
 </html>

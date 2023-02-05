@@ -513,6 +513,10 @@ video {
   --tw-backdrop-sepia:  ;
 }
 
+.table {
+  display: table;
+}
+
 .text-3xl {
   font-size: 1.875rem;
   line-height: 2.25rem;
@@ -524,4 +528,23 @@ video {
 
 .underline {
   text-decoration-line: underline;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+th,
+td {
+  border: solid 1px black;
+  padding: 0.5rem 0.7rem;
+}
+
+th:not(:first-child),
+td:not(:first-child) {
+  min-inline-size: 170px;
+}
+
+table tr th {
+  white-space: nowrap;
 }
