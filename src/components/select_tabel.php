@@ -28,7 +28,7 @@
 <!-- ------------------------------------------------------------------------------------------- -->
 
 <?php
-// SQLite statement to show data
+// SQLite untuk ambil data
 $full_table = "SELECT
 	pemilik.nama_pemilik,
 	pemilik.alamat_pemilik,
@@ -50,7 +50,7 @@ ON pemilik.id_kota_kab = kota_kab.id_kota_kab AND
     slo.id_penggunaan_slo = penggunaan_slo.id_penggunaan_slo AND
     slo.id_surat_izin = surat_izin.id_surat_izin;";
 
-// Converting date format to Indonesian
+// Ubah format tanggal ke Indonesia
 function tgl_indo($tgl)
 {
     $bulan = array(
@@ -74,19 +74,21 @@ function tgl_indo($tgl)
 }
 
 $rowCount = 0;
-$ret = $db->query($full_table);
+$data_tabel = $db->query($full_table);
 
-// Display fetched data
+// Tampilkan data yang diambil
 echo "<tr>";
-while ($row = $ret->fetchArray(SQLITE3_ASSOC)) {
+while ($row = $data_tabel->fetchArray(SQLITE3_ASSOC)) {
     echo "<td>" . htmlentities($rowCount + 1) . "</td>";
     echo "<td>" . htmlentities($row['nama_pemilik']) . "</td>";
     echo "<td>" . htmlentities($row['alamat_pemilik']) . "</td>";
     echo "<td>" . htmlentities($row['kota_kab']) . "</td>";
     echo "<td>" . htmlentities($row['alamat_pembangkit']) . "</td>";
+
     echo "<td>" . htmlentities($row['no_surat']) . "</td>";
     echo "<td>" . htmlentities(tgl_indo($row['tanggal_aktif_surat'])) . "</td>";
     echo "<td>" . htmlentities(tgl_indo($row['tanggal_akhir_surat'])) . "</td>";
+    
     echo "<td>" . htmlentities($row['no_slo']) . "</td>";
     echo "<td>" . htmlentities(tgl_indo($row['tanggal_aktif_slo'])) . "</td>";
     echo "<td>" . htmlentities(tgl_indo($row['tanggal_akhir_slo'])) . "</td>";
