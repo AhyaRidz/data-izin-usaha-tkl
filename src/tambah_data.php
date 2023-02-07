@@ -29,15 +29,16 @@ require_once './components/select_form_data.php'
                     <label for="alamat_pemilik">Alamat Perusahaan</label>
                     <input type="text" name="alamat_pemilik" id="alamat_pemilik" class="border-b-2 mb-2" placeholder="Jl. Alamat Perusahaan">
                     <label for="kota_kab">Kota/Kabupaten</label>
-                    <select name="kota_kab" id="kota_kab" class="border-b-2 mb-2">
+                    <select name="kota_kab" id="kota_kab" class="border-b-2 mb-2" onchange="toggle_data_baru()">
                         <option value="">--Pilih Salah Satu--</option>
                         <?php
                         while ($row = $data_kota_kab->fetchArray(SQLITE3_ASSOC)) {
                             echo "<option value='" . htmlentities($row['id_kota_kab']) . "'>" . htmlentities($row['kota_kab']) . "</option>";
                         }
                         ?>
-                        <option value="new">Lainnya</option>
+                        <option value="new">Lainnya...</option>
                     </select>
+                    <input type="text" name="kota_kab_baru" id="kota_kab_baru" placeholder="Kota/Kabupaten Baru" class="border-2 border-red-800 rounded mb-2">
                     <label for="alamat_pembangkit">Alamat Pembangkit</label>
                     <input type="text" name="alamat_pembangkit" id="alamat_pembangkit" class="border-b-2 mb-2" placeholder="Jl. Alamat Pembangkit">
                 </div>
@@ -63,30 +64,34 @@ require_once './components/select_form_data.php'
                     <label for="daya">Daya (Kva)</label>
                     <input type="number" name="daya" id="daya" class="border-b-2 mb-2" placeholder="300">
                     <label for="jenis_slo">Jenis SLO</label>
-                    <select name="jenis_slo" id="jenis_slo" class="border-b-2 mb-2">
+                    <select name="jenis_slo" id="jenis_slo" class="border-b-2 mb-2" onchange="toggle_data_baru()">
                         <option value="">--Pilih Salah Satu--</option>
                         <?php
                         while ($row = $data_jenis_slo->fetchArray(SQLITE3_ASSOC)) {
                             echo "<option value='" . htmlentities($row['id_jenis_slo']) . "'>" . htmlentities($row['jenis_slo']) . "</option>";
                         }
                         ?>
+                        <option value="new">Lainnya...</option>
                     </select>
+                    <input type="text" name="jenis_baru" id="jenis_baru" placeholder="Kota/Kabupaten Baru" class="border-2 border-red-800 rounded mb-2">
                     <label for="penggunaan_slo">Penggunaan SLO</label>
-                    <select name="penggunaan_slo" id="penggunaan_slo" class="border-b-2 mb-2">
+                    <select name="penggunaan_slo" id="penggunaan_slo" class="border-b-2 mb-2" onchange="toggle_data_baru()">
                         <option value="">--Pilih Salah Satu--</option>
                         <?php
                         while ($row = $data_penggunaan_slo->fetchArray(SQLITE3_ASSOC)) {
                             echo "<option value='" . htmlentities($row['id_penggunaan_slo']) . "'>" . htmlentities($row['penggunaan_slo']) . "</option>";
                         }
                         ?>
+                        <option value="new">Lainnya...</option>
                     </select>
+                    <input type="text" name="penggunaan_baru" id="penggunaan_baru" placeholder="Kota/Kabupaten Baru" class="border-2 border-red-800 rounded mb-2">
                 </div>
-                <hr class="mt-2 border-black">
             </div>
 
             <input type="submit" value="Submit" class="w-full mt-2 py-2 text-white bg-slate-600 rounded">
         </form>
     </main>
+    <script src="./components/index.js"></script>
 </body>
 
 </html>
